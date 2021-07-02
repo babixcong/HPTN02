@@ -24,35 +24,23 @@
     <div class="login-area">
         <div class="container">
             <div class="login-box ptb--100">
-                <form>
+                <form id="login-form" method="post" action="">
                     <div class="login-form-head">
                         <h4>Đăng nhập</h4>
                     </div>
                     <div class="login-form-body">
                         <div class="form-gp">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" id="exampleInputEmail1">
-                            <i class="ti-email"></i>
-                            <div class="text-danger"></div>
+                            <input type="email" name="email" id="email" placeholder="Nhập email">
+                            <div class="text-danger" id="error-email"></div>
                         </div>
                         <div class="form-gp">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" id="exampleInputPassword1">
-                            <i class="ti-lock"></i>
-                            <div class="text-danger"></div>
-                        </div>
-                        <div class="row mb-4 rmber-area">
-                            <div class="col-6">
-                                <div class="custom-control custom-checkbox mr-sm-2">
-                                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                                    <label class="custom-control-label" for="customControlAutosizing">Remember Me</label>
-                                </div>
-                            </div>
+                            <input type="password" name="password" id="password" placeholder="Nhập mật khẩu">
+                            <div class="text-danger" id="error-password"></div>
                         </div>
                         <div class="submit-btn-area">
                             <div class="login-other row">
                                 <div class="col-12">
-                                    <a class="fb-login" type="button" href="javascript:void(0)">Đăng nhập</a>
+                                    <button class="fb-login" id="btnLoggin" type="submit" href="javascript:void(0)">Đăng nhập</button>
                                 </div>
                             </div>
                         </div>
@@ -61,16 +49,77 @@
             </div>
         </div>
     </div>
-    <!-- login area end -->
-
-    <!-- jquery latest version -->
     <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
-    <!-- bootstrap 4 js -->
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-    <!-- others plugins -->
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#login-form').validate({
+                onfocusout: false,
+		onkeyup: false,
+		onclick: false,
+		rules: {
+                    "email": {
+                        required: true,
+                        email: true,
+                        
+                    },
+                    "password": {
+                        required: true,
+                        minlength: 8
+                    }
+                },
+                messages: {
+                    "email": {
+                        required: "Bắt buộc nhập email",
+                        email: "Sai định dạng email"
+                    },
+                    "password": {
+                        required: "Bắt buộc nhập password",
+                        minlength: "Hãy nhập ít nhất 8 ký tự"
+                    }
+		},
+                errorPlacement: function(error, element) {
+                    if (element.attr('name') == 'email') {
+                        $("#error-email").text($(error).text());
+                    } else if (element.attr('name') == 'password'){
+                        $("#error-password").text($(error).text());
+                    }
+                }
+            });
+           
+           
+            $('#login-form').on('submit', function(event) {
+                event.preventDefault();
+                if ($(this).valid()) {
+                    let email = $('#email').val();
+                    let password= $('#password').val();
+                    $.ajax({
+                        type: "POST",
+                        url: "user/login.html",
+                        data: {
+                            email: email,
+                            password: password
+                        },
+                        success: function(data) {
+                            if (data == 'index.html') {
+                                window.location.href = data;
+                            } else {
+                                $("#error-password").text('Thông tin đăng nhập sai! Hãy kiểm tra lại');
+                                $("#error-email").text('');
+                                $("#email").val('');
+                                $('#password').val('');
+                            }
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
 </body>
 
 </html>

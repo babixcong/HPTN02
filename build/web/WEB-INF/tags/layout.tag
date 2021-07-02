@@ -40,45 +40,68 @@
         <div class="loader"></div>
     </div>
     <div class="horizontal-main-wrapper">
-        <!-- main header area start -->
-        <div class="mainheader-area">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-3">
-                        <div class="logo">
-                            <a href="index.html"><img src="assets/images/icon/logo2.png" alt="logo"></a>
-                        </div>
-                    </div>
-                    <div class="col-md-9 clearfix text-right">
-                        <div class="clearfix d-md-inline-block d-block">
-                            <div class="user-profile m-0">
-                                <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                                <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Log Out</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="header-area header-bottom">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-9  d-none d-lg-block">
+                    <div class="col-lg-12  d-none d-lg-block">
                         <div class="horizontal-menu">
                             <nav>
                                 <ul id="nav_menu">
                                     <li>
-                                        <a href="index.html"><i class="ti-dashboard"></i><span>Trang chủ</span></a>
+                                        <a href="${pageContext.request.contextPath}/index.html"><i class="ti-dashboard"></i><span>Trang chủ</span></a>
                                     </li>
                                     <li>
-                                        <a href="home.html"><i class="ti-layout-sidebar-left"></i><span>Đổi quà cho khách hàng</span></a>
+                                        <a href="${pageContext.request.contextPath}/booking/list.html"><i class="ti-layout-sidebar-left"></i><span>Đặt sân</span></a>
+                                    </li>
+<!--                                    <li>
+                                        <c:if test="${sessionScope.checkcust == 0}">
+                                            <a href="${pageContext.request.contextPath}/cart/show.html" id="cartshow"><i class="ti-layout-sidebar-left"></i>
+                                        </c:if>
+                                        <c:if test="${sessionScope.checkcust != 0}">
+                                            <a href="${pageContext.request.contextPath}/cart/show.html?id=${sessionScope.checkcust}" id="cartshow"><i class="ti-layout-sidebar-left"></i>
+                                        </c:if>
+                                            <span>Đơn hàng
+                                                <c:if test="${sessionScope.myCartItems != null}">
+                                                (
+                                                <span id="cartNum">
+                                                    ${sessionScope.myCartNum}
+                                                </span>
+                                                )
+                                                </c:if>
+                                                <c:if test="${sessionScope.myCartItems == null}">
+                                                (
+                                                <span id="cartNum">
+                                                    0
+                                                </span>
+                                                )
+                                                </c:if>
+                                            </span>
+                                        </a>
+                                    </li>-->
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/booking/create.html"><i class="ti-layout-sidebar-left"></i><span>Phiếu đặt</span></a>
                                     </li>
                                     <li>
-                                        <a href="invoices.html"><i class="ti-layout-sidebar-left"></i><span>Thanh toán</span></a>
+                                        <a href="${pageContext.request.contextPath}/customers/search.html"><i class="ti-layout-sidebar-left"></i><span>Tìm khách hàng</span></a>
                                     </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/customers/create.html"><i class="ti-layout-sidebar-left"></i><span>Thêm khách hàng</span></a>
+                                    </li>
+                                    
+                                    <li style="float:right">
+                                        <a class="dropdown-item" href="${pageContext.request.contextPath}/logout.html">Đăng xuất</a>
+                                    </li>
+                                    <li style="float:right; padding-top: 7px">
+                                        ${sessionScope.name}
+                                    </li>
+<!--                                    <li>
+                                        <%--<c:if test="${sessionScope.checkcust == 0}">--%>
+                                            <a href="${pageContext.request.contextPath}/invoices.html"><i class="ti-layout-sidebar-left"></i><span>Thanh toán</span></a>
+                                        <%--</c:if>--%>
+                                        <%--<c:if test="${sessionScope.checkcust != 0}">--%>
+                                                <a href="${pageContext.request.contextPath}/invoices.html?id=${sessionScope.checkcust}"><i class="ti-layout-sidebar-left"></i><span>Thanh toán</span></a>
+                                        <%--</c:if>--%>
+                                    </li>-->
                                 </ul>
                             </nav>
                         </div>

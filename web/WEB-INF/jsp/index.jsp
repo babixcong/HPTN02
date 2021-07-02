@@ -9,23 +9,51 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="row">
-                            <div class="col-md-6 mt-5 mb-3">
+                            <div class="col-md-4 mt-5 mb-4">
                                 <div class="card">
                                     <div class="seo-fact sbg1">
                                         <div class="p-4 d-flex justify-content-between align-items-center">
-                                            <div class="seofct-icon">Chọn sản phẩm</div>
-                                            <h2>2,315</h2>
+                                            <div class="seofct-icon">
+                                                <a href="${pageContext.request.contextPath}/booking/list.html" style="color: white">
+                                                    Đặt sân
+                                                </a>
+                                            </div>
                                         </div>
                                         <canvas id="seolinechart1" height="50"></canvas>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 mt-md-5 mb-3">
+                            <div class="col-md-4 mt-5 mb-4">
+                                <div class="card">
+                                    <div class="seo-fact sbg1">
+                                        <div class="p-4 d-flex justify-content-between align-items-center">
+                                            <div class="seofct-icon">
+                                                <a href="${pageContext.request.contextPath}/stuff/list.html" style="color: white">
+                                                    Vật phẩm
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <canvas id="seolinechart1" height="50"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mt-5 mb-4">
+                                <div class="card">
+                                    <div class="seo-fact sbg1">
+                                        <div class="p-4 d-flex justify-content-between align-items-center">
+                                            <div class="seofct-icon">
+                                                <a href="${pageContext.request.contextPath}/gifts/list.html" style="color: white">Danh sách quà</a></div>
+                                        </div>
+                                        <canvas id="seolinechart1" height="50"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mt-md-5 mb-3">
                                 <div class="card">
                                     <div class="seo-fact sbg2">
                                         <div class="p-4 d-flex justify-content-between align-items-center">
-                                            <div class="seofct-icon">Đổi quà</div>
-                                            <h2>3,984</h2>
+                                            <div class="seofct-icon">
+                                                <a href="${pageContext.request.contextPath}/gifts/exchange.html" style="color: white">Đổi quà</a></div>
                                         </div>
                                         <canvas id="seolinechart2" height="50"></canvas>
                                     </div>
