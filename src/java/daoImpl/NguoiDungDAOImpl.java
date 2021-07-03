@@ -14,10 +14,6 @@ import models.BCrypt;
 import models.DiaChi;
 import models.NguoiDung;
 
-/**
- *
- * @author CongNguyen
- */
 public class NguoiDungDAOImpl extends AbstractDAOImpl implements NguoiDungDAO{
 
     @Override
@@ -29,7 +25,7 @@ public class NguoiDungDAOImpl extends AbstractDAOImpl implements NguoiDungDAO{
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                check = BCrypt.checkpw(password, rs.getString("matkhau"));
+                check = BCrypt.checkpw(password, rs.getString("password"));
             }
             
             return check;
@@ -81,4 +77,41 @@ public class NguoiDungDAOImpl extends AbstractDAOImpl implements NguoiDungDAO{
             }
         }
     } 
+
+    @Override
+    public NguoiDung findByEmail(String email) {
+        String sql = "select nd.*, dc.*, dc.id as dcId from tblNguoiDung as nd join tblDiaChi as dc on "
+                + "nd.diachiId = dc.id where nd.email=?";
+        try {
+            PreparedStatement ps = this.conn.prepareCall(sql);
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            NguoiDung nd = new NguoiDung();
+            while (rs.next()) {
+                nd.setId(rs.getInt("id"));
+                nd.setHoten(rs.getString("hoten"));
+                nd.setCmt(rs.getString("cmt"));
+                nd.setSdt(rs.getString("sdt"));
+                nd.setEmail(rs.getString("email"));
+                nd.setMa(rs.getString("ma"));
+                DiaChi dc = new DiaChi();
+                dc.setId(rs.getInt("dcId"));
+                dc.setSonha(rs.getString("sonha"));
+                dc.setDuongpho(rs.getString("pho"));
+                dc.setPhuong(rs.getString("phuong"));
+                dc.setQuan(rs.getString("quan"));
+                dc.setThanhpho(rs.getString("thanhpho"));
+                nd.setDiaChi(dc);
+            }
+            return nd;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            ConnectDB.dbClose();
+            return null;
+        }finally {
+            if (this.conn == null) {
+                ConnectDB.dbClose();
+            }
+        }
+    }
 }

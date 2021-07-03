@@ -55,13 +55,11 @@ public class DiaChiDAOImpl extends AbstractDAOImpl implements DiaChiDAO{
             } catch (SQLException ex) {
                 Logger.getLogger(DiaChiDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
             return null;
         } finally {
             if (this.conn == null) {
                 ConnectDB.dbClose();
             }
-            
         }
     }
 
@@ -90,10 +88,6 @@ public class DiaChiDAOImpl extends AbstractDAOImpl implements DiaChiDAO{
             if (this.conn == null) {
                 ConnectDB.dbClose();
             }
-            
         }
-    }
-    
-    
-    
+    }  
 }

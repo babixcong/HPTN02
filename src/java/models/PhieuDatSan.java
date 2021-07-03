@@ -7,11 +7,8 @@ package models;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
-/**
- *
- * @author CongNguyen
- */
 public class PhieuDatSan implements Serializable {
     private static final long serialVersionUID = 1L;
     private int id;
@@ -21,6 +18,7 @@ public class PhieuDatSan implements Serializable {
     private Timestamp ngaytao;
     private KhachHang kh;
     private NguoiDung nd;
+    private ArrayList<LichThue> listLichthue;
 
     public PhieuDatSan() {
         
@@ -97,5 +95,13 @@ public class PhieuDatSan implements Serializable {
     public void setNd(NguoiDung nd) {
         this.nd = nd;
     }
-    
+
+    public ArrayList<LichThue> getListLichthue() {
+        return listLichthue;
+    }
+
+    public void setListLichthue(ArrayList<LichThue> listLichthue) {
+        this.listLichthue = listLichthue;
+    }
 }
+

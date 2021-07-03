@@ -64,7 +64,7 @@
                 </form>
             </div>
             <div class="data-tables datatable-primary">
-                <form action="bill/store.html" method="post">
+                <form>
                     <table id="table-ve" class="text-center">
                         <thead class="text-capitalize">
                             <tr>
@@ -87,6 +87,7 @@
                                 <td class="text-left">${item.value.getMaSan()}</td>
                                 <td>${item.value.getTen()}</td>
                                 <td>${item.value.getLoaisan()}</td>
+                                <input type="hidden" value="${item.value.getMaSan()}" name="code[]" />
                                 <td><input name="checkinHour[]" id="checkinHour-${item.value.getMaSan()}" type="time" value="${tempList[item.value.getMaSan()][0]}" /></td>
                                 <td><input name="checkoutHour[]" id="checkoutHour-${item.value.getMaSan()}" value="${tempList[item.value.getMaSan()][1]}" type="time" /></td>
                                 <td><input name="checkinDate[]" id="checkinDate-${item.value.getMaSan()}" value="${tempList[item.value.getMaSan()][2]}" type="date" /></td>
@@ -105,13 +106,6 @@
                             </tr>
                         </c:forEach>
                     </table>
-                    <div class="row">
-                        <div class="col-12">
-                            <c:if test="${sessionScope.KhachHang != null && sessionScope.listSan.size() != 0}">
-                                <button class="btn btn-success" id="xac-nhan" type="submit" style="color: white" >Xác nhận</button>
-                            </c:if>       		            		            
-                        </div> 
-                    </div>
                 </form>
             </div>
             <div class="col-12">
@@ -127,6 +121,11 @@
                                     <label class="control-label">Tiền cọc (10%)</label>
                                     <input type="text" id="tiencoc" disabled="" val="${sessionScope.tiencoc}" placeholder="${sessionScope.tiencoc} đ" />	            		            		            
                                 </div>
+                                <div class="col-6">
+                                    <c:if test="${sessionScope.KhachHang != null && sessionScope.listSan.size() != 0}">
+                                        <button class="btn btn-success" id="xac-nhan" style="color: white" >Xác nhận</button>
+                                    </c:if>       		            		            
+                                </div> 
                             </div>
                         </div>
                     </div>				    	
@@ -141,7 +140,6 @@
         <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
-        <script src="assets/js/jquery.validate.min.js" type="text/javascript"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.13.0/dist/sweetalert2.all.min.js"></script>
         
         <script type="text/javascript">
@@ -294,6 +292,47 @@
 
                     return x1 + x2;
                 }
+                
+                $('#xac-nhan').on('click', function(event) {
+                    event.preventDefault();
+                    let checkinHour = $('input[name="checkinHour[]"]').map(function(i, el) {
+                        return el.value;
+                    }).get();
+                    
+                    let checkoutHour = $('input[name="checkoutHour[]"]').map(function(i, el) {
+                        return el.value;
+                    }).get();
+                    
+                    let checkinDate = $('input[name="checkinDate[]"]').map(function(i, el) {
+                        return el.value;
+                    }).get();
+                    
+                    let checkoutDate = $('input[name="checkoutDate[]"]').map(function(i, el) {
+                        return el.value;
+                    }).get();
+                    
+                    let code = $('input[name="code[]"]').map(function(i, el) {
+                        return el.value;
+                    }).get();
+                    
+                    $.ajax({
+                        type: "post",
+                        dataType: "json",
+                        url: "bill/store.html",
+                        data:{
+                            'checkinHour[]': checkinHour,
+                            'checkoutHour[]': checkoutHour,
+                            'checkinDate[]': checkinDate,
+                            'checkoutDate[]': checkoutDate,
+                            'code[]': code
+                        }
+                    }).done(function(response) {
+                        console.log(response);
+                        window.location.href = "bill/detail.html";
+                    }).fail(function(xqXHR, textError, errorThrown) {
+                        
+                    });
+                })
             });
         </script>
     </jsp:attribute>

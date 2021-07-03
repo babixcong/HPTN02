@@ -8,10 +8,6 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-/**
- *
- * @author CongNguyen
- */
 public class ConnectDB {
     static java.sql.Connection conn = null;
     private static String username = "root";

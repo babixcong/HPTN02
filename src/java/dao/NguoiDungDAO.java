@@ -10,4 +10,5 @@ import models.NguoiDung;
 public interface NguoiDungDAO {
     public boolean checkLogin(String email, String password);
     public NguoiDung findByID(int id);
+    public NguoiDung findByEmail(String email);
 }

@@ -5,10 +5,6 @@
  */
 package dao;
 
-/**
- *
- * @author CongNguyen
- */
 public interface AbstractDAO {
     
 }

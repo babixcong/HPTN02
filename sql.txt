@@ -1,0 +1,168 @@
+create table tblKhachHang(
+    id integer auto_increment primary key,
+    ma varchar(10) not null unique,
+    hoten nvarchar(255) not null,
+    diachiId integer,
+    email varchar(255) unique,
+    cmt varchar(12) unique not null,
+    sdt varchar(15) unique not null
+)
+
+create table tblDiaChi(
+    id integer auto_increment primary key,
+    sonha nvarchar(255),
+    pho nvarchar(255),
+    phuong nvarchar(255),
+    quan nvarchar(255),
+    thanhpho nvarchar(255)
+)
+
+create table tblSan(
+    id integer auto_increment primary key,
+    ma varchar(10) not null unique,
+    ten nvarchar(255) not null unique,
+    sanchaId integer,
+    loaisan nvarchar(10) not null,
+    giathue float not null
+)
+
+alter table tblLichThue
+add column checkinHour time
+
+alter table tblLichThue
+add column checkoutHour time
+
+alter table tblLichThue 
+add column checkinDate date
+
+alter table tblLichThue 
+add column checkoutDate date
+
+create table tblLichThue(
+    id integer auto_increment primary key,
+    khachhangId integer not null,
+    sanId integer not null,
+    phieudatId integer not null,
+    checkinHour time,
+    checkoutHour time,
+    checkinDate date,
+    checkoutDate date
+)
+
+create table tblPhieuDatSan(
+    id integer auto_increment primary key,
+    ma varchar(255) not null unique,
+    khachhangId integer not null,
+    sanId integer not null,
+    nguoidungId integer not null,
+    tongtien float not null,
+    tiencoc float not null,
+    ngaytao datetime not null
+)
+
+create table tblNguoiDung(
+    id integer auto_increment primary key,
+    ma varchar(255) not null unique,
+    hoten nvarchar(255) not null,
+    diachiId integer,
+    email varchar(255) unique not null,
+    password varchar(255) not null,
+    cmt varchar(12) unique not null,
+    sdt varchar(15) unique not null
+)
+
+insert into tblDiaChi(id, sonha, pho, phuong, quan, thanhpho) values(1, 56, "Dinh Cong", "Dinh Cong", "Hoang Mai", "Ha Noi");
+
+
+insert into tblKhachHang(id, ma, hoten, diachiId, email, cmt, sdt) values (1, "KH01", "Le Trung Nghia", 1, "nghia@gmail.com", "01234567", "098765434")
+ id integer auto_increment primary key,
+    ma varchar(10) not null unique,
+    ten nvarchar(255) not null unique,
+    sanconId integer,
+    loaisan nvarchar(10) not null,
+    giathue float not null
+insert into tblSan(id, ma, ten, sanchaId, loaisan, giathue) values (1, "S01", "Sân 1", null, "To", 500000);
+insert into tblSan(id, ma, ten, sanchaId, loaisan, giathue) values (2, "S02", "Sân 2", null, "Mini", 200000);
+insert into tblSan(id, ma, ten, sanchaId, loaisan, giathue) values (3, "S03", "Sân 3", null, "Mini", 100000);
+insert into tblSan(id, ma, ten, sanchaId, loaisan, giathue) values (4, "S04", "Sân 4", null, "To", 100000);
+insert into tblSan(id, ma, ten, sanchaId, loaisan, giathue) values (5, "S05", "Sân 5", null, "Mini", 100000);
+insert into tblSan(id, ma, ten, sanchaId, loaisan, giathue) values (6, "S06", "Sân 6", null, "vua", 100000);
+insert into tblSan(id, ma, ten, sanchaId, loaisan, giathue) values (7, "S07", "Sân 7", null, "Mini", 100000);
+
+select * from tblDiaChi
+
+SELECT LAST_INSERT_ID() from tblDiaChi
+
+select * from tblKhachHang
+
+
+select kh.id, kh.ma, kh.hoten, kh.diachiId, kh.email, kh.cmt, kh.sdt, dc.id, dc.sonha, dc.pho, dc.phuong, dc.quan, dc.thanhpho from tblKhachHang as kh join tblDiaChi as dc on kh.diachiId = dc.id
+
+
+select kh.*, dc.*, dc.id as dcId from tblKhachHang as kh join tblDiaChi as dc on kh.diachiId = dc.id
+
+select * from tblPhieuDatSan where ngaytao > "2021-06-22 06:00:00.0";
+
+select * from tblSan
+
+
+select tblLichThue.sanId from tblLichThue where checkin >= "2021-06-20 06:00:00.0" and checkout <= "2021-06-25 06:00:00.0"
+
+select tblLichThue.sanId from tblLickThue 
+where (checkin between ? and ?) 
+or (checkout between ? and ?) 
+or (checkin <= ? and checkout >= ?)
+or (checkin >= > and checkout <= ?)
+
+select * from tblLichThue
+select * from tblSan
+
+Select * from tblSan where  loaisan = "Vừa"
+
+update tblSan set trangthai = 1 where loaisan = 'Vừa'
+
+select lt.sanId from tblLichThue as lt 
+join tblSan as s on lt.sanId = s.id 
+where (lt.checkin between '2021-06-10 21:08:00.0' and '2021-06-23 21:08:00.0')
+or (lt.checkout between '2021-06-10 21:08:00.0' and '2021-06-23 21:08:00.0')
+or (lt.checkin <= '2021-06-10 21:08:00.0' and '2021-06-23 21:08:00.0')
+or (lt.checkin >= '2021-06-10 21:08:00.0' and '2021-06-23 21:08:00.0')
+and s.trangthai = 1;
+
+Select * from tblSan where loaisan = "Mini" and id not in ()
+
+select lt.sanId from tblLichThue as lt join tblSan as s on lt.sanId = s.id where s.loaisan='Mini' and ((lt.checkin between '2021-06-10 21:08:00.0' and '2021-06-23 21:08:00.0') or (lt.checkout between '2021-06-10 21:08:00.0' and '2021-06-23 21:08:00.0') or (lt.checkin <= '2021-06-10 21:08:00.0' and lt.checkout >= '2021-06-23 21:08:00.0') or (lt.checkin >= '2021-06-10 21:08:00.0' and lt.checkout <= '2021-06-23 21:08:00.0'));
+
+select * from tblSan
+
+
+alter table tblLichThue
+add column checkinHour time
+
+alter table tblLichThue
+add column checkoutHour time
+
+alter table tblLichThue 
+add column checkinDate date
+
+alter table tblLichThue 
+add column checkoutDate date
+
+select * from tblLichThue
+
+
+select lt.sanId from tblLichThue as lt 
+join tblSan as s on lt.sanId = s.id 
+where ((lt.checkinDate between '2021-06-01' and '2021-06-02')
+or (lt.checkoutDate between '2021-06-01' and '2021-06-02')
+or (lt.checkinDate <= '2021-06-01' and lt.checkoutDate >= '2021-06-02')
+or (lt.checkinDate >= '2021-06-01' and lt.checkoutDate <= '2021-06-02'))
+and ((lt.checkinHour between '10:00:00' and '11:00:00')
+or (lt.checkoutHour between '10:00:00' and '11:00:00')
+or (lt.checkinHour <= '10:00:00' and lt.checkoutHour >= '11:00:00')
+or (lt.checkinHour >= '10:00:00' and lt.checkoutHour <= '11:00:00'))
+and s.trangthai = 1
+
+select * from tblLichThue
+
+select * from tblPhieuDatSan

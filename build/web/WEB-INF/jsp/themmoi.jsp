@@ -206,6 +206,7 @@
                             dataType : 'json',
                         }).done(function(response) {
                             Swal.fire("Thêm thành công!");
+                            window.location.href = "customers/search.html";
                         }).fail(function(jqXHR, textStatus, errorThrown) {
                             Swal.fire("Có lỗi xảy ra");
                         });

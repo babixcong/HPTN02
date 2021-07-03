@@ -7,10 +7,6 @@ package dao;
 
 import models.DiaChi;
 
-/**
- *
- * @author CongNguyen
- */
 public interface DiaChiDAO {
     public DiaChi getDiaChi(int id);
     public DiaChi store(DiaChi dc);

@@ -5,10 +5,9 @@
  */
 package dao;
 
-/**
- *
- * @author CongNguyen
- */
+import models.PhieuDatSan;
+
 public interface PhieuDatSanDAO {
-    
+    public PhieuDatSan store(PhieuDatSan pds);
+    public PhieuDatSan findById(int id);
 }

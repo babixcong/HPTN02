@@ -9,10 +9,6 @@ import dao.AbstractDAO;
 import dao.ConnectDB;
 import java.sql.Connection;
 
-/**
- *
- * @author CongNguyen
- */
 public class AbstractDAOImpl implements AbstractDAO{
     protected Connection conn;
     

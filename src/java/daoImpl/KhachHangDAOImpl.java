@@ -199,8 +199,5 @@ public class KhachHangDAOImpl extends AbstractDAOImpl implements KhachHangDAO {
                 ConnectDB.dbClose();
             }
         }
-    }
-    
-    
-    
+    } 
 }

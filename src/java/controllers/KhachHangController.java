@@ -36,9 +36,9 @@ public class KhachHangController {
         ArrayList<KhachHang> list = khDAO.getAll();
         String view = "timkhachhang";
 
-//        if (session.getAttribute("username") == null) {
-//            view = "redirect:/login.html";
-//        }
+        if (session.getAttribute("username") == null) {
+            view = "redirect:/login.html";
+        }
         mv.addObject("list", list);
         mv.setViewName(view);
         
@@ -51,9 +51,9 @@ public class KhachHangController {
         ModelAndView mv = new ModelAndView();
         String view = "themmoi";
 
-//        if (session.getAttribute("username") == null) {
-//            view = "redirect:/login.html";
-//        }
+        if (session.getAttribute("username") == null) {
+            view = "redirect:/login.html";
+        }
         mv.setViewName(view);
         
         return mv;
@@ -114,6 +114,5 @@ public class KhachHangController {
         response[0] = "Chọn thành công";
         response[1] = "200";
         return mapper.writeValueAsString(response);
-        
     }
 }

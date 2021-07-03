@@ -6,7 +6,8 @@
 package models;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.sql.Date;
+import java.sql.Time;
 
 /**
  *
@@ -15,7 +16,40 @@ import java.sql.Timestamp;
 public class LichThue implements Serializable {
     private static final long serialVersionUID = 1L;
     private int id;
-    private Timestamp checkin, checkout;
+    private Time checkinHour, checkoutHour;
+    private Date checkinDate, checkoutDate;
+
+    public Time getCheckinHour() {
+        return checkinHour;
+    }
+
+    public void setCheckinHour(Time checkinHour) {
+        this.checkinHour = checkinHour;
+    }
+
+    public Time getCheckoutHour() {
+        return checkoutHour;
+    }
+
+    public void setCheckoutHour(Time checkoutHour) {
+        this.checkoutHour = checkoutHour;
+    }
+
+    public Date getCheckinDate() {
+        return checkinDate;
+    }
+
+    public void setCheckinDate(Date checkinDate) {
+        this.checkinDate = checkinDate;
+    }
+
+    public Date getCheckoutDate() {
+        return checkoutDate;
+    }
+
+    public void setCheckoutDate(Date checkoutDate) {
+        this.checkoutDate = checkoutDate;
+    }
     private int sanId, khachhangId, phieudatId;
     private KhachHang kh;
     private San s;
@@ -31,22 +65,6 @@ public class LichThue implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Timestamp getCheckin() {
-        return checkin;
-    }
-
-    public void setCheckin(Timestamp checkin) {
-        this.checkin = checkin;
-    }
-
-    public Timestamp getCheckout() {
-        return checkout;
-    }
-
-    public void setCheckout(Timestamp checkout) {
-        this.checkout = checkout;
     }
 
     public int getSanId() {

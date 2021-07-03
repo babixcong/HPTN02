@@ -15,7 +15,6 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import models.KhachHang;
-import models.LichThue;
 import models.San;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;
@@ -36,9 +35,9 @@ public class DatSanController {
         ModelAndView mv = new ModelAndView();
         String view = "timsan";
        
-//        if (session.getAttribute("username") == null) {
-//            view = "redirect:/login.html";
-//        }
+        if (session.getAttribute("username") == null) {
+            view = "redirect:/login.html";
+        }
         mv.setViewName(view);
         
         return mv;
@@ -48,32 +47,26 @@ public class DatSanController {
     @ResponseBody
     public ModelAndView search(
         HttpSession session,
-        @RequestParam("checkin") String checkin,
-        @RequestParam("checkout") String checkout,
+        @RequestParam("checkinHour") String checkinHour,
+        @RequestParam("checkoutHour") String checkoutHour,
+        @RequestParam("checkinDate") String checkinDate,
+        @RequestParam("checkoutDate") String checkoutDate,
         @RequestParam("type") String type
     ) throws IOException {
-        if (session.getAttribute("sCheckin") != null) {
-            session.removeAttribute("sCheckin");
-        }
-        session.setAttribute("sCheckin", checkin);
-        
-        if (session.getAttribute("sCheckout") != null) {
-            session.removeAttribute("sCheckout");
-            
-        }
-        session.setAttribute("sCheckout", checkout);
-        checkin += ":00";
-        checkout += ":00";
-        
-        
         ModelAndView mv = new ModelAndView();
-        ArrayList<San> list = ltDAO.filter(checkin, checkout, type);
+        ArrayList<San> list = ltDAO.filter(
+            checkinHour,
+            checkoutHour,
+            checkinDate,
+            checkoutDate,
+            type
+        );
         String view = "ketquatimsan";
         
         
-//        if (session.getAttribute("username") == null) {
-//            view = "redirect:/login.html";
-//        }
+        if (session.getAttribute("username") == null) {
+            view = "redirect:/login.html";
+        }
         mv.setViewName(view);
         mv.addObject("list", list);
         return mv;
@@ -142,6 +135,10 @@ public class DatSanController {
     public ModelAndView chitiet(HttpSession session) {
         ModelAndView mv = new ModelAndView();
         String view = "giaodienchitiet";
+        if (session.getAttribute("username") == null) {
+            view = "redirect:/login.html";
+        }
+        
         mv.setViewName(view);
         return mv;
     }
@@ -255,9 +252,9 @@ public class DatSanController {
         return mapper.writeValueAsString(response);
     }
     
-    private float totalPrice(HashMap<String, String[]> cartItems) {
+    private float totalPrice(HashMap<String, String[]> listSan) {
         int count = 0;
-        for (Map.Entry<String, String[]> list : cartItems.entrySet()) {
+        for (Map.Entry<String, String[]> list : listSan.entrySet()) {
             count += Float.parseFloat(list.getValue()[4]);
         }
         return count;
