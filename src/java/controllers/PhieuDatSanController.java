@@ -75,7 +75,7 @@ public class PhieuDatSanController {
             LichThue newLt = ltDAO.store(lt);
         }
         
-        session.removeAttribute("khachhang");
+        session.removeAttribute("KhachHang");
         session.removeAttribute("listSan");
         session.removeAttribute("tempList");
         session.removeAttribute("tongtien");

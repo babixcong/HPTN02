@@ -93,13 +93,11 @@
                             id: id
                         }
                     }).done(function(response) {
-//                        if (response[2] == "200") {
-                            if (existedCustomer.length == 0) {
-                                window.location.href = "customers/search.html";
-                            } else {
-                                window.location.href = "booking/create.html";
-                            }
-//                        }
+                        if (existedCustomer.length == 0) {
+                            window.location.href = "customers/search.html";
+                        } else {
+                            window.location.href = "booking/create.html";
+                        }
                     }).fail(function(jqXHR, textStatus, errorThrown) {
                         console.log(jqXHR);
                     });

@@ -3,19 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/src/java/models/TestGetData.java</file>
+            <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/src/java/dao/NguoiDungDAO.java</file>
             <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/web/WEB-INF/jsp/giaodienchitiet.jsp</file>
-            <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/src/java/controllers/LoginController.java</file>
-            <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/src/java/controllers/TrangChuController.java</file>
-            <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/src/java/daoImpl/LichThueDAOImpl.java</file>
-            <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/src/java/models/LichThue.java</file>
-            <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/src/java/controllers/PhieuDatSanController.java</file>
-            <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/web/WEB-INF/jsp/timsan.jsp</file>
-            <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/src/java/daoImpl/PhieuDatSanDAOImpl.java</file>
-            <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/web/WEB-INF/jsp/timkhachhang.jsp</file>
             <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/web/WEB-INF/jsp/xacnhan.jsp</file>
-            <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/src/java/daoImpl/NguoiDungDAOImpl.java</file>
+            <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/src/java/daoImpl/DiaChiDAOImpl.java</file>
             <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/src/java/controllers/DatSanController.java</file>
+            <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/src/java/daoImpl/LichThueDAOImpl.java</file>
+            <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/src/java/controllers/PhieuDatSanController.java</file>
+            <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/src/java/dao/SanDAO.java</file>
+            <file>file:/C:/Users/CongNguyen/Documents/NetBeansProjects/HPTN02/src/java/daoImpl/SanDAOImpl.java</file>
         </group>
     </open-files>
 </project-private>

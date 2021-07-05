@@ -43,7 +43,7 @@ public class LoginController {
         session.removeAttribute("name");
         session.removeAttribute("nguoidung");
         session.removeAttribute("listSan");
-        session.removeAttribute("khachhang");
+        session.removeAttribute("KhachHang");
         session.removeAttribute("tongtien");
         session.removeAttribute("tiencoc");
         session.removeAttribute("tempList");
