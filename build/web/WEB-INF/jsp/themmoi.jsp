@@ -206,14 +206,16 @@
                             dataType : 'json',
                         }).done(function(response) {
                             Swal.fire("Thêm thành công!");
-                            window.location.href = "customers/search.html";
+                            window.history.back();
                         }).fail(function(jqXHR, textStatus, errorThrown) {
                             Swal.fire("Có lỗi xảy ra");
                         });
                     }
                 });
                 
-                
+                $('#cancel').on('click', function() {
+                    window.history.back();
+                });
             });
         </script>
     </jsp:attribute>

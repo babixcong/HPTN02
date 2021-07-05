@@ -95,17 +95,29 @@ public class LichThueDAOImpl extends AbstractDAOImpl implements LichThueDAO{
 
     @Override
     public ArrayList<San> filter(String checkinHour, String checkoutHour, String checkinDate, String checkoutDate, String type) {
-        String sql = "select lt.sanId from tblLichThue as lt "
-                + "join tblSan as s on lt.sanId = s.id "
-                + "where ((lt.checkinDate between '" + checkinDate +"' and '" + checkoutDate + "') "
-                + "or (lt.checkoutDate between '" + checkinDate +"' and '" + checkoutDate + "') "
-                + "or (lt.checkinDate <= '" + checkinDate +"' and lt.checkoutDate >= '" + checkoutDate + "') "
-                + "or (lt.checkinDate >= '" + checkinDate +"' and lt.checkoutDate <= '" + checkoutDate + "')) "
-                + "and ((lt.checkinHour between '" + checkinHour +"' and '" + checkoutHour + "') "
-                + "or (lt.checkoutHour between '" + checkinHour +"' and '" + checkoutHour + "') "
-                + "or (lt.checkinHour <= '" + checkinHour +"' and lt.checkoutHour >= '" + checkoutHour + "') "
-                + "or (lt.checkinHour >= '" + checkinHour +"' and lt.checkoutHour <= '" + checkoutHour + "')) "
-                + "and s.trangthai = 1";
+        String sql = "select lt.sanId from tblLichThue as lt " +
+                    "join tblSan as s on lt.sanId = s.id " +
+                    "where (((lt.checkinDate between '"+checkinDate+"' and '"+checkoutDate+"') " +
+                    "and ((lt.checkinHour between '" +checkinHour+"' and '"+checkoutHour+"') " +
+                    "or (lt.checkoutHour between '" +checkinHour+"' and '"+checkoutHour+"') " +
+                    "or (lt.checkinHour <= '"+checkinHour+"' and lt.checkoutHour >= '"+checkoutHour+"') " +
+                    "or (lt.checkinHour >= '"+checkinHour+"' and lt.checkoutHour <= '"+checkoutHour+"'))) " +
+                    "or ((lt.checkoutDate between '"+checkinDate+"' and '"+checkoutDate+"') " +
+                    "and ((lt.checkinHour between '" +checkinHour+"' and '"+checkoutHour+"') " +
+                    "or (lt.checkoutHour between '" +checkinHour+"' and '"+checkoutHour+"') " +
+                    "or (lt.checkinHour <= '"+checkinHour+"' and lt.checkoutHour >= '"+checkoutHour+"') " +
+                    "or (lt.checkinHour >= '"+checkinHour+"' and lt.checkoutHour <= '"+checkoutHour+"'))) " +
+                    "or ((lt.checkinDate <= '"+checkinDate+"' and lt.checkoutDate >= '"+checkoutDate+"') " +
+                    "and ((lt.checkinHour between '" +checkinHour+"' and '"+checkoutHour+"') " +
+                    "or (lt.checkoutHour between '" +checkinHour+"' and '"+checkoutHour+"') " +
+                    "or (lt.checkinHour <= '"+checkinHour+"' and lt.checkoutHour >= '"+checkoutHour+"') " +
+                    "or (lt.checkinHour >= '"+checkinHour+"' and lt.checkoutHour <= '"+checkoutHour+"'))) " +
+                    "or ((lt.checkinDate >= '"+checkinDate+"' and lt.checkoutDate <= '"+checkoutDate+"') " +
+                    "and ((lt.checkinHour between '" +checkinHour+"' and '"+checkoutHour+"') " +
+                    "or (lt.checkoutHour between '" +checkinHour+"' and '"+checkoutHour+"') " +
+                    "or (lt.checkinHour <= '"+checkinHour+"' and lt.checkoutHour >= '"+checkoutHour+"') " +
+                    "or (lt.checkinHour >= '"+checkinHour+"' and lt.checkoutHour <= '"+checkoutHour+"')))) " +
+                    "and s.trangthai = 1";
 
         if (!type.equals("all")) {
             sql += " and s.loaisan='" +type +"';";

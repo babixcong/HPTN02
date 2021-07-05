@@ -121,6 +121,7 @@
         <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.13.0/dist/sweetalert2.all.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#table-ve').DataTable( {
@@ -131,7 +132,17 @@
                 });
                 
                 $('#tro-ve').on('click', function() {
-                   window.location.href = "index.html"; 
+                    
+                    Swal.fire({
+                        title: 'Thành công',
+                        icon: 'success',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'OK'
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = "index.html";
+                        }
+                      })
                 });
             })
         </script>

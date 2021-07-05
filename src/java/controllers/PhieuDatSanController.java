@@ -21,6 +21,7 @@ import models.NguoiDung;
 import models.PhieuDatSan;
 import models.San;
 import java.util.ArrayList;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -79,8 +80,11 @@ public class PhieuDatSanController {
         session.removeAttribute("tempList");
         session.removeAttribute("tongtien");
         session.removeAttribute("tiencoc");
-        
-        return "200";
+        ObjectMapper mapper = new ObjectMapper();
+        String[] response = new String[3];
+        response[0] = String.valueOf(newPDS.getId());
+        response[1] = "200";
+        return mapper.writeValueAsString(response);
     }
     
     @RequestMapping(value="/detail", method = RequestMethod.GET)

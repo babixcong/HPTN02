@@ -14,11 +14,17 @@
     <jsp:attribute name="content">
         <div class="main-content-inner">
             <div class="col-md-12">
-                <c:if test="${sessionScope.sCheckin != null}">
-                    <input type="hidden" id="sCheckin" value="${sessionScope.sCheckin}" />
+                <c:if test="${sessionScope.checkinHour != null}">
+                    <input type="hidden" id="sCheckinHour" value="${sessionScope.checkinHour}" />
                 </c:if>
-                <c:if test="${sessionScope.sCheckout}">
-                    <input type="hidden" id="sCheckout" value="${sessionScope.sCheckout}" />
+                <c:if test="${sessionScope.checkoutHour != null}">
+                    <input type="hidden" id="sCheckoutHour" value="${sessionScope.checkinHour}" />
+                </c:if>
+                <c:if test="${sessionScope.checkinDate != null}">
+                    <input type="hidden" id="sCheckinDate" value="${sessionScope.checkinDate}" />
+                </c:if>
+                <c:if test="${sessionScope.checkoutDate != null}">
+                    <input type="hidden" id="sCheckoutDate" value="${sessionScope.checkoutDate}" />
                 </c:if>
                 <form class="form-horizontal dailyaspirants-login-page lg-container" role="form" action="#" method="post">
                     <c:if test="${sessionScope.KhachHang != null}">
@@ -191,6 +197,24 @@
                     let checkoutHour = $('#checkoutHour-' + code).val();
                     let checkinDate = $('#checkinDate-' + code).val();
                     let checkoutDate = $('#checkoutDate-' + code).val();
+                    
+                    let scheckinHour = $('#sCheckinHour').val();
+                    let scheckoutHour = $('#sCheckoutHour').val();
+                    let scheckinDate = $('#sCheckinDate').val();
+                    let scheckoutDate = $('#sCheckoutDate').val();
+                    
+                    if (checkinDate < scheckinDate || checkoutDate > scheckoutDate) {
+                        alert("Ngày không phù hợp");
+                        return;
+                    } else {
+                        if (checkinHour < scheckinHour || checkoutHour > scheckoutHour) {
+                            alert("Thời gian không phù hợp");
+                            return;
+                        }
+                    }
+                    
+                    
+                    
                     let giathue = $('#gia-' + code).val();
                     if (checkinDate == '' || checkoutDate == '') {
                         alert("Ngày không phù hợp");
@@ -327,8 +351,8 @@
                             'code[]': code
                         }
                     }).done(function(response) {
-                        console.log(response);
-                        window.location.href = "bill/detail.html";
+                        window.location.href = "bill/detail.html?id=" + response[0];
+                        
                     }).fail(function(xqXHR, textError, errorThrown) {
                         
                     });

@@ -62,6 +62,27 @@ public class DatSanController {
             type
         );
         String view = "ketquatimsan";
+        if (session.getAttribute("checkinHour") == null) {
+            session.setAttribute("checkinHour", checkinHour);
+        } else {
+            session.setAttribute("checkinHour", checkinHour);
+        }
+        
+        if (session.getAttribute("checkoutHour") == null) {
+            session.setAttribute("checkoutHour", checkoutHour);
+        } else {
+            session.setAttribute("checkoutHour", checkoutHour);
+        }
+        if (session.getAttribute("checkinDate") == null) {
+            session.setAttribute("checkinDate", checkinDate);
+        } else {
+            session.setAttribute("checkinHour", checkinDate);
+        }
+        if (session.getAttribute("checkoutDate") == null) {
+            session.setAttribute("checkoutDate", checkoutDate);
+        } else {
+            session.setAttribute("checkoutDate", checkoutDate);
+        }
         
         
         if (session.getAttribute("username") == null) {

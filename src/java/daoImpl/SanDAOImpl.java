@@ -48,13 +48,18 @@ public class SanDAOImpl extends AbstractDAOImpl implements SanDAO{
 
     @Override
     public ArrayList<San> getById(ArrayList<Integer> id, String type) {
-        String sql = "Select * from tblSan where trangthai != 1 ";
+        String sql = "Select * from tblSan ";
         if (!type.equals("all")) {
-            sql += "and loaisan = '" + type + "' ";
+            sql += "where loaisan = '" + type + "' ";
         }
         
         if (id.size() != 0) {
-            sql += "and id not in (";
+            if (!type.equals("all")) {
+                sql += "and id not in (";
+            } else {
+                sql += "where id not in (";
+            }
+            
             
             for (int i = 0;i < id.size(); i++) {
                 if (i < id.size() - 1) {

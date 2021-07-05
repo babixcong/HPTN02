@@ -81,7 +81,7 @@ public class PhieuDatSanDAOImpl extends AbstractDAOImpl implements PhieuDatSanDA
             ResultSet rs = ps.executeQuery();
             PhieuDatSan pds = new PhieuDatSan();
             while (rs.next()) {
-                pds.setId(rs.getInt("id"));
+                pds.setId(rs.getInt("pdsID"));
                 pds.setNgaytao(rs.getTimestamp("ngaytao"));
                 pds.setMaPhieu(rs.getString("pdsMa"));
                 pds.setTiencoc(rs.getFloat("tiencoc"));
