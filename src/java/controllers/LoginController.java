@@ -36,18 +36,4 @@ public class LoginController {
         
         return "Thông tin đăng nhập sai! Hãy kiểm tra lại";
     }
-    
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(HttpSession session) {
-        session.removeAttribute("username");
-        session.removeAttribute("name");
-        session.removeAttribute("nguoidung");
-        session.removeAttribute("listSan");
-        session.removeAttribute("KhachHang");
-        session.removeAttribute("tongtien");
-        session.removeAttribute("tiencoc");
-        session.removeAttribute("tempList");
-        
-        return "redirect:login.html";
-    }
 }

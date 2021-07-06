@@ -53,31 +53,6 @@
                                     <li>
                                         <a href="${pageContext.request.contextPath}/booking/list.html"><i class="ti-layout-sidebar-left"></i><span>Đặt sân</span></a>
                                     </li>
-<!--                                    <li>
-                                        <c:if test="${sessionScope.checkcust == 0}">
-                                            <a href="${pageContext.request.contextPath}/cart/show.html" id="cartshow"><i class="ti-layout-sidebar-left"></i>
-                                        </c:if>
-                                        <c:if test="${sessionScope.checkcust != 0}">
-                                            <a href="${pageContext.request.contextPath}/cart/show.html?id=${sessionScope.checkcust}" id="cartshow"><i class="ti-layout-sidebar-left"></i>
-                                        </c:if>
-                                            <span>Đơn hàng
-                                                <c:if test="${sessionScope.myCartItems != null}">
-                                                (
-                                                <span id="cartNum">
-                                                    ${sessionScope.myCartNum}
-                                                </span>
-                                                )
-                                                </c:if>
-                                                <c:if test="${sessionScope.myCartItems == null}">
-                                                (
-                                                <span id="cartNum">
-                                                    0
-                                                </span>
-                                                )
-                                                </c:if>
-                                            </span>
-                                        </a>
-                                    </li>-->
                                     <li>
                                         <a href="${pageContext.request.contextPath}/booking/create.html"><i class="ti-layout-sidebar-left"></i><span>Phiếu đặt</span></a>
                                     </li>
@@ -89,19 +64,11 @@
                                     </li>
                                     
                                     <li style="float:right">
-                                        <a class="dropdown-item" href="${pageContext.request.contextPath}/logout.html">Đăng xuất</a>
+                                        <a class="dropdown-item" id="logout" href="logout.html">Đăng xuất</a>
                                     </li>
                                     <li style="float:right; padding-top: 7px">
                                         ${sessionScope.name}
                                     </li>
-<!--                                    <li>
-                                        <%--<c:if test="${sessionScope.checkcust == 0}">--%>
-                                            <a href="${pageContext.request.contextPath}/invoices.html"><i class="ti-layout-sidebar-left"></i><span>Thanh toán</span></a>
-                                        <%--</c:if>--%>
-                                        <%--<c:if test="${sessionScope.checkcust != 0}">--%>
-                                                <a href="${pageContext.request.contextPath}/invoices.html?id=${sessionScope.checkcust}"><i class="ti-layout-sidebar-left"></i><span>Thanh toán</span></a>
-                                        <%--</c:if>--%>
-                                    </li>-->
                                 </ul>
                             </nav>
                         </div>
@@ -127,6 +94,8 @@
     <jsp:invoke fragment="extra_js"></jsp:invoke>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
+    <script type="text/javascript">
+    </script>
 </body>
 
 </html>

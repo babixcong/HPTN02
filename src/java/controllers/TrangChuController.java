@@ -34,13 +34,13 @@ public class TrangChuController {
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpSession session) {
         session.removeAttribute("username");
-        session.removeAttribute("userid");
-        session.removeAttribute("myCartItems");
-        session.removeAttribute("myCartNum");
-        session.removeAttribute("myCartTotal");
-        session.removeAttribute("the");
-        session.removeAttribute("kh");
-        session.removeAttribute("checkcust");
+        session.removeAttribute("name");
+        session.removeAttribute("nguoidung");
+        session.removeAttribute("listSan");
+        session.removeAttribute("KhachHang");
+        session.removeAttribute("tongtien");
+        session.removeAttribute("tiencoc");
+        session.removeAttribute("tempList");
         return "redirect:login.html";
     }
 }
