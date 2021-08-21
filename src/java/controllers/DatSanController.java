@@ -53,6 +53,11 @@ public class DatSanController {
         @RequestParam("checkoutDate") String checkoutDate,
         @RequestParam("type") String type
     ) throws IOException {
+        System.out.println("params--------------");
+        System.out.println(checkinHour);
+        System.out.println(checkoutHour);
+        System.out.println(checkinDate);
+        System.out.println(checkoutDate);
         ModelAndView mv = new ModelAndView();
         ArrayList<San> list = ltDAO.filter(
             checkinHour,
@@ -62,28 +67,37 @@ public class DatSanController {
             type
         );
         String view = "ketquatimsan";
+        System.out.println("session------------------");
         if (session.getAttribute("checkinHour") == null) {
             session.setAttribute("checkinHour", checkinHour);
         } else {
+            System.out.println(session.getAttribute("checkinHour"));
             session.setAttribute("checkinHour", checkinHour);
+            System.out.println(session.getAttribute("checkinHour"));
         }
         
         if (session.getAttribute("checkoutHour") == null) {
             session.setAttribute("checkoutHour", checkoutHour);
         } else {
+            System.out.println(session.getAttribute("checkoutHour"));
             session.setAttribute("checkoutHour", checkoutHour);
+            System.out.println(session.getAttribute("checkoutHour"));
         }
         if (session.getAttribute("checkinDate") == null) {
             session.setAttribute("checkinDate", checkinDate);
         } else {
-            session.setAttribute("checkinHour", checkinDate);
+            System.out.println(session.getAttribute("checkinDate"));
+            session.setAttribute("checkinDate", checkinDate);
+            System.out.println(session.getAttribute("checkinDate"));
         }
         if (session.getAttribute("checkoutDate") == null) {
             session.setAttribute("checkoutDate", checkoutDate);
         } else {
+            System.out.println(session.getAttribute("checkoutDate"));
             session.setAttribute("checkoutDate", checkoutDate);
+            System.out.println(session.getAttribute("checkoutDate"));
         }
-        
+       
         
         if (session.getAttribute("username") == null) {
             view = "redirect:/login.html";

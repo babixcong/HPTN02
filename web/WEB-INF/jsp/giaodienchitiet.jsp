@@ -18,7 +18,7 @@
                     <input type="hidden" id="sCheckinHour" value="${sessionScope.checkinHour}" />
                 </c:if>
                 <c:if test="${sessionScope.checkoutHour != null}">
-                    <input type="hidden" id="sCheckoutHour" value="${sessionScope.checkinHour}" />
+                    <input type="hidden" id="sCheckoutHour" value="${sessionScope.checkoutHour}" />
                 </c:if>
                 <c:if test="${sessionScope.checkinDate != null}">
                     <input type="hidden" id="sCheckinDate" value="${sessionScope.checkinDate}" />
